@@ -15,12 +15,15 @@ jobs:
       - name: Print Hello Message in testing
         run: echo "Hello World from Testing Job"
 
-      - name: Execute commands
+      - name: Execute few commands
         run:
           echo "Hello Mess 1"
           echo "Hello Mess 2"
           echo "App name -- ${{ env.APPLICATION_NAME }}"
 
+      - name: List current folder
+        run:
+          ls -la
   my_deploy:
     runs-on:  ubuntu-latest
     needs: [my_testing]
