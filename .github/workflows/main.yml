@@ -1,5 +1,7 @@
 name: MyGitHubAction-Basics
-
+env:
+  APPLICATION_NAME: "HTML"
+  PACKAGE_NAME: "ver-${{ github.sha }}"
 on:
   push:
     branches:
@@ -13,10 +15,16 @@ jobs:
       - name: Print Hello Message in testing
         run: echo "Hello World from Testing Job"
 
+      - name: Execute commands
+        run:
+          echo "Hello Mess 1"
+          echo "Hello Mess 2"
+          echo "App name -- ${{ env.APPLICATION_NAME }}"
+
   my_deploy:
     runs-on:  ubuntu-latest
     needs: [my_testing]
     
     steps:
       - name: Print Hello Message in deploy
-        run: echo "Hello World from Deploy Job"
+        run: echo "Deploy pckg name is ${{ env.PACKAGE_NAME }}"
