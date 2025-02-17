@@ -21,9 +21,17 @@ jobs:
           echo "Hello Mess 2"
           echo "App name -- ${{ env.APPLICATION_NAME }}"
 
-      - name: List current folder
+      - name: List current folder BEFORE
         run:
           ls -la
+          
+      - name: Git clone my repo
+        uses: actions/checkout@v1
+        
+      - name: List current folder AFTER
+        run:
+          ls -la
+          
   my_deploy:
     runs-on:  ubuntu-latest
     needs: [my_testing]
